@@ -11,16 +11,16 @@ data class EventDto(
     val icon: String,
     val objType: String,
     val loginRequired: Boolean,
-    val venue: List<VenueDto>
+    val venue: VenueDto
 )
 
 data class VenueDto(
-    val city: String,
-    val state: String
+    val city: String?,
+    val state: String?
 )
 
 fun VenueDto.toVenue(): Venue {
-    return Venue(city, state)
+    return Venue(city?:"", state?:"")
 }
 
 fun EventDto.toEvent(): Event {
@@ -32,5 +32,5 @@ fun EventDto.toEvent(): Event {
         icon,
         objType,
         loginRequired,
-        venue.map { it.toVenue() })
+        venue.toVenue() )
 }

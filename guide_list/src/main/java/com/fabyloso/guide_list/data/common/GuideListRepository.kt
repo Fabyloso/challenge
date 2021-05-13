@@ -9,6 +9,6 @@ class GuideListRepository @Inject constructor(private val remoteSource: GuideRem
     Repository() {
     fun getUpcomingEvents() = resultFlow(
         networkCall = { remoteSource.getUpcomingEvents() },
-        convertTo = { data -> data.events.map { it.toEvent() } }
+        convertTo = { data -> data.data.map { it.toEvent() } }
     )
 }

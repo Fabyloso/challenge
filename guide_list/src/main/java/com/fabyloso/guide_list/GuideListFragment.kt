@@ -1,30 +1,22 @@
 package com.fabyloso.guide_list
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 
-class GuideListFragment : Fragment() {
+@AndroidEntryPoint
+class GuideListFragment : Fragment(R.layout.guide_list_fragment) {
 
-    companion object {
-        fun newInstance() = GuideListFragment()
-    }
+    private val viewModel: GuideListViewModel by viewModels()
 
-    private lateinit var viewModel: GuideListViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.guide_list_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(GuideListViewModel::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.observeEvents.observe(viewLifecycleOwner){
+            view.findViewById<TextView>(R.id.text).text =it.data?.firstOrNull()?.name
+        }
 
     }
 
