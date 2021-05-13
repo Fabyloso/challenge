@@ -1,3 +1,4 @@
 rootProject.name = "challenge"
 include ':app'
 include ':core'
+include ':guide_list'
