@@ -7,7 +7,12 @@ data class Event(
     val name: String,
     val icon: String,
     val objType: String,
-    val loginRequired: Boolean
-//    val venue: List<Any>
+    val loginRequired: Boolean,
+    val venue: List<Venue>
+)
+
+class Venue(
+    val city: String,
+    val state: String
 )
 
