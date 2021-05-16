@@ -8,7 +8,7 @@ data class Event(
     val icon: String,
     val objType: String,
     val loginRequired: Boolean,
-    val venue: Venue
+    val venue: Venue?
 )
 
 class Venue(

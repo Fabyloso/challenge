@@ -34,8 +34,4 @@ abstract class RemoteController {
                 .addCallAdapterFactory(LiveDataCallAdapterFactory())
                 .build()
         }
-    val mockRetrofit: Retrofit
-        get() {
-            return retrofit.newBuilder().baseUrl("http://127.0.0.1:8080").build()
-        }
 }

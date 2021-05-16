@@ -15,12 +15,12 @@ data class EventDto(
 )
 
 data class VenueDto(
-    val city: String?,
-    val state: String?
+    val city: String ="",
+    val state: String=""
 )
 
 fun VenueDto.toVenue(): Venue {
-    return Venue(city?:"", state?:"")
+    return Venue(city, state)
 }
 
 fun EventDto.toEvent(): Event {
@@ -32,5 +32,6 @@ fun EventDto.toEvent(): Event {
         icon,
         objType,
         loginRequired,
-        venue.toVenue() )
+        venue.toVenue()
+    )
 }
