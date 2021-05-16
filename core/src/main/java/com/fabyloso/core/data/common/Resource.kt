@@ -2,7 +2,7 @@ package com.fabyloso.core.data.common
 
 import com.fabyloso.core.data.common.Resource.Status.*
 
-data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
+data class Resource<out T>(val status: Status, val data: T?, val message: String ="") {
     enum class Status {
         SUCCESS,
         ERROR,
@@ -11,7 +11,7 @@ data class Resource<out T>(val status: Status, val data: T?, val message: String
 
     companion object {
         fun <T> success(data: T?): Resource<T> {
-            return Resource(SUCCESS, data, null)
+            return Resource(SUCCESS, data)
         }
 
         fun <T> error(msg: String, data: T?): Resource<T> {
@@ -19,7 +19,7 @@ data class Resource<out T>(val status: Status, val data: T?, val message: String
         }
 
         fun <T> loading(data: T?): Resource<T> {
-            return Resource(LOADING, data, null)
+            return Resource(LOADING, data)
         }
     }
 }

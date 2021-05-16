@@ -13,4 +13,9 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/guide_item_row" />
 
+    <include
+        layout="@layout/loading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
