@@ -1,4 +1,4 @@
-package com.fabyloso.guide_list
+package com.fabyloso.guide_list.ui.guide_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -45,6 +45,7 @@ class GuideListAdapter(private val clickListener: (item: Event) -> Unit = {}) :
                     .load(event.icon)
                     .fit()
                     .centerCrop()
+                    .placeholder(android.R.drawable.ic_menu_gallery)
                     .into(binding.eventIv)
             }
         }

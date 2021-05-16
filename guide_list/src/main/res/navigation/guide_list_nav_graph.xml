@@ -6,6 +6,7 @@
 
     <fragment
         android:id="@+id/guideListFragment"
-        android:name="com.fabyloso.guide_list.GuideListFragment"
+        android:name="com.fabyloso.guide_list.ui.guide_list.GuideListFragment"
         android:label="GuideListFragment" />
+
 </navigation>

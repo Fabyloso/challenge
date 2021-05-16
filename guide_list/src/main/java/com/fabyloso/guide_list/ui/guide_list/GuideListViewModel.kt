@@ -1,4 +1,4 @@
-package com.fabyloso.guide_list
+package com.fabyloso.guide_list.ui.guide_list
 
 import androidx.lifecycle.ViewModel
 import com.fabyloso.guide_list.data.common.GuideListRepository
