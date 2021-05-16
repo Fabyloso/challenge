@@ -25,6 +25,15 @@ abstract class RemoteController {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
+    open val liveDataRetrofit: Retrofit
+        get() {
+            return Retrofit.Builder()
+                .client(baseClient)
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(LiveDataCallAdapterFactory())
+                .build()
+        }
     val mockRetrofit: Retrofit
         get() {
             return retrofit.newBuilder().baseUrl("http://127.0.0.1:8080").build()

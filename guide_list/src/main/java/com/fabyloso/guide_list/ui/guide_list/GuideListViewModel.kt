@@ -8,5 +8,5 @@ import javax.inject.Inject
 @HiltViewModel
 class GuideListViewModel @Inject constructor(repository: GuideListRepository) : ViewModel() {
 
-    val observeEvents by lazy { repository.getUpcomingEvents() }
+    val observeEvents by lazy { repository.getUpcomingEvents().asLiveData() }
 }
