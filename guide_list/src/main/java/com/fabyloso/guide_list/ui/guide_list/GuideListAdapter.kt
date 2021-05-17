@@ -2,6 +2,7 @@ package com.fabyloso.guide_list.ui.guide_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import com.fabyloso.guide_list.data.local.Event
 import com.fabyloso.guide_list.databinding.GuideItemRowBinding
@@ -38,9 +39,14 @@ class GuideListAdapter(private val clickListener: (item: Event) -> Unit = {}) :
         fun bind(event: Event, clickListener: (item: Event) -> Unit) {
             binding.run {
                 binding.root.setOnClickListener { clickListener(event) }
-                binding.startDateTv.text = event.startDate
                 binding.endDateTv.text = event.endDate
                 binding.eventNameTv.text = event.name
+
+                if (event.venue?.city?.isNotBlank() == true) {
+                    binding.cityTv.text = event.venue.city
+                    binding.cityTv.isGone = false
+                }
+
                 Picasso.get()
                     .load(event.icon)
                     .fit()
