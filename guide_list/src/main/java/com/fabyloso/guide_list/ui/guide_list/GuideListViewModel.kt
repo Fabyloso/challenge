@@ -6,7 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class GuideListViewModel @Inject constructor(repository: GuideListRepository) : ViewModel() {
+open class GuideListViewModel @Inject constructor(repository: GuideListRepository) : ViewModel() {
 
-    val observeEvents by lazy { repository.getUpcomingEvents().asLiveData() }
+    val observeEvents by lazy { repository.getUpcomingEvents() }
 }

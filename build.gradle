@@ -10,7 +10,7 @@ buildscript {
             'lifecycle_extensions': "2.2.0",
             'mockito'             : "2.25.0",
             'mockito_all'         : "1.10.19",
-            'mockito_android'     : "3.3.3",
+            'mockito_android'     : "2.25.0",
             'retrofit'            : '2.9.0'
     ]
     ext.min_version = 23

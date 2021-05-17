@@ -11,19 +11,19 @@ import com.fabyloso.guide_list.data.remote.model.DataDto
 import com.fabyloso.guide_list.data.remote.model.toEvent
 import javax.inject.Inject
 
-class GuideListRepository @Inject constructor(
+open class GuideListRepository @Inject constructor(
     private val remoteSource: GuideService,
     private val appExecutors: AppExecutors
 ) {
 
-    fun getUpcomingEvents() = object : NetworkBoundResource<List<Event>, DataDto>(appExecutors){
-        override fun createCall(): LiveData<ApiResponse<DataDto>> {
-           return remoteSource.getUpcomingEvents()
-        }
+    open fun getUpcomingEvents() =
+        object : NetworkBoundResource<List<Event>, DataDto>(appExecutors) {
+            override fun createCall(): LiveData<ApiResponse<DataDto>> {
+                return remoteSource.getUpcomingEvents()
+            }
 
-        override fun processResponse(response: ApiSuccessResponse<DataDto>): List<Event> {
-            return response.body.data.map { it.toEvent() }
-        }
-
-    }
+            override fun processResponse(response: ApiSuccessResponse<DataDto>): List<Event> {
+                return response.body.data.map { it.toEvent() }
+            }
+        }.asLiveData()
 }
